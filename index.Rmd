@@ -1,5 +1,5 @@
 ---
-title: "Modelling Species Presence-Only Data with Random Forests. *Ecography*."
+title: "Modelling Species Presence-Only Data with Random Forests. Ecography."
 description: |
   Supporting Information
 author:
