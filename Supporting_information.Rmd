@@ -1,0 +1,43 @@
+---
+title: "Supporting information"
+description: |
+  Modelling Species Presence-Only Data with Random Forests, *Ecography*.
+author:
+  - name: Roozbeh Valavi 
+    url: https://github.com/rvalavi
+    affiliation: The University of Melbourne, Australia
+    affiliation_url: https://ecosystemforest.unimelb.edu.au/
+    orcid_id: 0000-0003-2495-5277
+  - name: Jane Elith 
+    affiliation: The University of Melbourne, Australia
+    affiliation_url: https://ecosystemforest.unimelb.edu.au/
+    orcid_id: 0000-0002-8706-0326
+  - name: José J. Lahoz-Monfort 
+    affiliation: The University of Melbourne, Australia
+    affiliation_url: https://ecosystemforest.unimelb.edu.au/
+    orcid_id: 0000-0002-0845-7035
+  - name: Gurutzeta Guillera-Arroita 
+    affiliation: The University of Melbourne, Australia
+    affiliation_url: https://ecosystemforest.unimelb.edu.au/
+    orcid_id: 0000-0002-8387-5739
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  # tidy = TRUE,
+  # tidy.opts = list(width.cutoff = 80),
+  fig.align = "center"
+)
+```
+
+# Generating background samples
+
+To account for the known sampling bias in the NCEAS dataset (Phillips *et al.,* 2009), we generate two types of background samples. One is the **target-group-background (TGB)** samples introduced by Phillips *et al.* (2009). In this method, the presence sites from each biological group (including the target species itself) are used as the background samples for each species in the same biological group. The idea is that the set of sites for the biological group indicates sampling effort across the region, and hence informs the model about the sampling effort producing the data for any one species. Consistent with the presence samples, the TGB data are reduced to one record per grid cell. For the details read Phillips et al. (2009) and vignette “Modeling NCEAS data” in the `disdat` package (Elith *et al.* 2020). The result of these background samples are presented in the next section.
+
+
+
