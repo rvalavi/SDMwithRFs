@@ -27,6 +27,7 @@ output:
     toc_depth: '2'
     theme: theme.css
 header-includes: 
+  \usepackage{caption}
   \renewcommand{\figurename}{Fig.} 
   \renewcommand{\thefigure}{S\arabic{figure}} 
   \renewcommand{\thetable}{S\arabic{table}}
@@ -89,7 +90,7 @@ kde_samples <- dismo::randomPoints(tgb_kde,
 
 # Results for TGB
 
-The performance of the models fitted with NCEAS presence-TGB samples is shown in Fig. S1. The performance of the models is similar to the models fitted on the KDE samples (presented in the main text). In both evaluation metrics, the default classification RF had a relatively poor performance in all regions (except SWI), followed by regression RF and weighted. The SWI dataset gained the highest overall AUC. Weighted has a higher COR than the default and regression RF in both SA and AWT regions. This could be due to the fact that SWI has more occurrence points (Elith *et al.,* 2020). The down-sample, equal-sample and both shallow RFs achieved higher AUC and COR for all regions. Overall, the AUC and COR for TGB is higher than those for KDE samples.  
+The performance of the models fitted with NCEAS presence-TGB samples is shown in Fig. S\@ref(fig:tgb1) The performance of the models is similar to the models fitted on the KDE samples (presented in the main text). In both evaluation metrics, the default classification RF had a relatively poor performance in all regions (except SWI), followed by regression RF and weighted. The SWI dataset gained the highest overall AUC. Weighted has a higher COR than the default and regression RF in both SA and AWT regions. This could be due to the fact that SWI has more occurrence points (Elith *et al.,* 2020). The down-sample, equal-sample and both shallow RFs achieved higher AUC and COR for all regions. Overall, the AUC and COR for TGB is higher than those for KDE samples.  
 
 As we discussed in the main paper, the problem of RF is not only the high number of background samples but the environmental overlap between the presence and background/absence sites. This is evident in the result of the models fitted on the TGB samples. The ratio between the number of presence to TGB samples is larger than the presence to 50,000 KDE samples (see number of TGB samples below). Even though the presence-TGB samples are not extremely imbalanced, we still see the improvement of the models with sampling approaches (equal and down samples) and the shallow methods. 
 
@@ -108,7 +109,7 @@ sort(unique(nn))
 ```
 
 
-```{r, echo=FALSE, fig.width=10, fig.height=4, fig.cap="Performance of different RF models on different regions of NCEAS data with TGB. The values in cells are AUC and COR for the left and right figures respectively. Colour varies with values, yellow (low) to dark navy (high)."}
+```{r tgb1, echo=FALSE, fig.width=10, fig.height=4, fig.cap="Performance of different RF models on different regions of NCEAS data with TGB. The values in cells are AUC and COR for the left and right figures respectively. Colour varies with values, yellow (low) to dark navy (high)."}
 library(tidyverse)
 library(viridis)
 
@@ -197,10 +198,10 @@ cowplot::plot_grid(g1, g2)
 
 ## Statistical test on TGB results 
 
-The Friedman’s Aligned Rank test was highly significant, indicating the statistical difference between the models in both metrics. The statistical significance of models based on the adjusted p-values is visualised in Fig. S2. This figure shows: 1) shallow, shallow-tuned, down-sample and equal-sample are not significantly different, 2) all these four models are significantly better than the default, weighted and regression RF models, and 3) the default, weighted and regression RF are also not significantly different.
+The Friedman’s Aligned Rank test was highly significant, indicating the statistical difference between the models in both metrics. The statistical significance of models based on the adjusted p-values is visualised in Fig. S\@ref(fig:tgb2). This figure shows: 1) shallow, shallow-tuned, down-sample and equal-sample are not significantly different, 2) all these four models are significantly better than the default, weighted and regression RF models, and 3) the default, weighted and regression RF are also not significantly different.
 
 
-```{r echo=FALSE, fig.width=4, fig.height=3.5, fig.cap="Statistical significance of AUC for different models fitted on presence-TGB data."}
+```{r tgb2, echo=FALSE, fig.width=4, fig.height=3.5, fig.cap="Statistical significance of AUC for different models fitted on presence-TGB data."}
 library(scmamp)
 
 cvresult <- list.files("data/ranger_nceas_tgb/", full.names = TRUE) %>% 
@@ -250,10 +251,10 @@ drawAlgorithmGraph(post_results$corrected.pval,
 
 ```
 
-Each box in Fig. S2 indicates a model and the boxes with connection are the one with no statistically significant differences. The green box shows the model with the highest rank in this metric and dataset.
+Each box in Fig. S\@ref(fig:tgb3) indicates a model and the boxes with connection are the one with no statistically significant differences. The green box shows the model with the highest rank in this metric and dataset.
 
 
-```{r echo=FALSE, fig.width=4, fig.height=4, fig.cap="Statistical significance of COR for different models fitted on presence-TGB data."}
+```{r tgb3, echo=FALSE, fig.width=4, fig.height=4, fig.cap="Statistical significance of COR for different models fitted on presence-TGB data."}
 library(scmamp)
 
 cvresult <- list.files("data/ranger_nceas_tgb/", full.names = TRUE) %>% 
@@ -297,7 +298,7 @@ drawAlgorithmGraph(post_results$corrected.pval,
 
 ```
 
-Notice that only the models with a direct link are not statistically different (in that specific metric and dataset). Although all models are connected in Fig. S3, but not all of them are directly connected. Fig. S3 shows that the differences in the rank of equal-sample, down-sample, shallow and shallow-tuned are statistically insignificant. The rank of shallow is not significantly different from weighted, but the rank of the other three are (equal-sample, down-sample and shallow-tuned). The regression RF and Default are not statistically different from the weighted classification RF, but they are different from the shallow RFs, equal and down sample. All other following figures can be interpreted in the same way.
+Notice that only the models with a direct link are not statistically different (in that specific metric and dataset). Although all models are connected in Fig. S\@ref(fig:tgb3), but not all of them are directly connected. Fig. S\@ref(fig:tgb3) shows that the differences in the rank of equal-sample, down-sample, shallow and shallow-tuned are statistically insignificant. The rank of shallow is not significantly different from weighted, but the rank of the other three are (equal-sample, down-sample and shallow-tuned). The regression RF and Default are not statistically different from the weighted classification RF, but they are different from the shallow RFs, equal and down sample. All other following figures can be interpreted in the same way.
 
 
 # Statistical comparison of models
