@@ -1005,7 +1005,7 @@ pred_shall_tune <- predict(predictors, rf_shallow_tuned,
 The spatial prediction of the different implementations of RF in previous examples (Fig. S\@ref(fig:map1)) further illustrates the results. Here we only present the models we used in the main text (see Fig. S\@ref(fig:map2) and S\@ref(fig:map3) for all methods in both packages). To help visualisation, predictions are rescaled from 0 to 1, so if there are a few high predictions and the rest low, the map will be pale (i.e., overfitting). It is the general spatial pattern of predictions that is important. The default, weighted and regression RFs only predicted to the presence sites and locations close to them (very small dots in their map) and did not follow the general pattern of the virtual species suitability, implying an extreme case of overfitting. On the other hand, equal-sample, down-sample and shallow closely follow the spatial pattern of the virtual species (the truth).
 
 
-```{r map1, echo=TRUE, fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations on the virtual species (truth). Training data had 102 presences and 9775 random background points. For better comparison, the values in all maps were linearly rescaled between 0 and 1."}
+```{r map1, echo=TRUE, layout="l-body-outset", fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations on the virtual species (truth). Training data had 102 presences and 9775 random background points. For better comparison, the values in all maps were linearly rescaled between 0 and 1."}
 
 library(tmap)
 library(scales)
@@ -1052,7 +1052,7 @@ as.data.frame(maps, na.rm = TRUE) %>%
 Spatial prediction of models fitted with the `randomForest` package is presented in Fig. S\@ref(fig:map2). To make the differences clear, we rescaled all the values between 0 and 1 (for the predictions of both packages). 
 Notice that we did not fit *shallow* model with the `randomForest` package.
 
-```{r map2, echo=FALSE, fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations with randomForest package."}
+```{r map2, echo=FALSE, layout="l-body-outset", fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations with randomForest package."}
 
 # rescale and stack the predicted maps
 rf_maps <- list("default" = pred_def,
@@ -1075,7 +1075,7 @@ tm_shape(rf_maps) +
 
 Spatial prediction of models fitted with the `ranger` package is presented in Fig. S\@ref(fig:map3). The truth is the same as the figure above.
 
-```{r map3, echo=FALSE, fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations with ranger package."}
+```{r map3, echo=FALSE, layout="l-body-outset", fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations with ranger package."}
 # rescale and stack the predicted maps
 rng_maps <- list("default" = pred_rng_def,
                  "regression" = pred_rng_reg,
