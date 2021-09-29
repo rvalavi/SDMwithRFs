@@ -394,7 +394,7 @@ drawAlgorithmGraph(post_results$corrected.pval,
 ```
 
 
-```{r echo=FALSE, fig.width=4.5, fig.height=3.5, fig.cap="The average rank of AUC vs COR for the models fitted on presence-KDE data. The values of the x and y axis are reversed to have the lowest rank (better models) on the top-right corner and vice versa."}
+```{r kde1, echo=FALSE, fig.width=4.5, fig.height=3.5, fig.cap="The average rank of AUC vs COR for the models fitted on presence-KDE data. The values of the x and y axis are reversed to have the lowest rank (better models) on the top-right corner and vice versa."}
 library(tidyverse)
 library(scmamp)
 library(viridis)
@@ -455,7 +455,7 @@ ggplot(data = models_ranks, aes(x = AUC, y = COR, col = model)) +
 
 ```
 
-Fig. S6 show the mean rank of the models on the presence-KDE dataset. The down-sample has the lowest rank (the best rank; top-right) in both AUC and COR.
+Fig. S\@ref(fig:kde1) show the mean rank of the models on the presence-KDE dataset. The down-sample has the lowest rank (the best rank; top-right) in both AUC and COR.
 
 
 ## Ranking and statistical test for simulated species
@@ -565,9 +565,9 @@ ggplot(data = models_ranks, aes(x = AUC, y = COR, col = model)) +
 
 # Prediction variability: simulated species
 
-For the simulated species, to test whether there is variability in the prediction of each modelling approach, we fitted each model 10 times on the 100 virtual species and took the standard deviation of AUC and COR (Fig. S9). The shallow and down-sampling showed the lowest variability in their AUC and COR. In contrast, equal-sample and shallow-tuned had the highest variability among all. The variability of equal-sample is due to the fact that it does not take many background samples so, the model produces a slightly different result each time. The shallow-tuned is using random cross-validation to tune its parameters, so each time a slightly different set of parameters could be selected. Note that the level of variability is relatively small overall.
+For the simulated species, to test whether there is variability in the prediction of each modelling approach, we fitted each model 10 times on the 100 virtual species and took the standard deviation of AUC and COR (Fig. S\@ref(fig:variability)). The shallow and down-sampling showed the lowest variability in their AUC and COR. In contrast, equal-sample and shallow-tuned had the highest variability among all. The variability of equal-sample is due to the fact that it does not take many background samples so, the model produces a slightly different result each time. The shallow-tuned is using random cross-validation to tune its parameters, so each time a slightly different set of parameters could be selected. Note that the level of variability is relatively small overall.
 
-```{r, echo=FALSE, fig.width=7, fig.height=3.3, fig.cap="Standard deviation of AUC and COR for ten runs on each virtual species."}
+```{r variability, echo=FALSE, fig.width=7, fig.height=3.3, fig.cap="Standard deviation of AUC and COR for ten runs on each virtual species."}
 rf_repeat <- list.files("data/AUS_ranger_repeat/", full.names = TRUE) %>% 
   map(read.csv, stringsAsFactors = FALSE) %>% 
   do.call(rbind.data.frame, .) %>% 
@@ -1002,10 +1002,10 @@ pred_shall_tune <- predict(predictors, rf_shallow_tuned,
 
 # Spatial prediction
 
-The spatial prediction of the different implementations of RF in previous examples (Fig. S10) further illustrates the results. Here we only present the models we used in the main text (see Fig. S11 and S12 for all methods in both packages). To help visualisation, predictions are rescaled from 0 to 1, so if there are a few high predictions and the rest low, the map will be pale (i.e., overfitting). It is the general spatial pattern of predictions that is important. The default, weighted and regression RFs only predicted to the presence sites and locations close to them (very small dots in their map) and did not follow the general pattern of the virtual species suitability, implying an extreme case of overfitting. On the other hand, equal-sample, down-sample and shallow closely follow the spatial pattern of the virtual species (the truth).
+The spatial prediction of the different implementations of RF in previous examples (Fig. S\@ref(fig:map1)) further illustrates the results. Here we only present the models we used in the main text (see Fig. S\@ref(fig:map2) and S\@ref(fig:map3) for all methods in both packages). To help visualisation, predictions are rescaled from 0 to 1, so if there are a few high predictions and the rest low, the map will be pale (i.e., overfitting). It is the general spatial pattern of predictions that is important. The default, weighted and regression RFs only predicted to the presence sites and locations close to them (very small dots in their map) and did not follow the general pattern of the virtual species suitability, implying an extreme case of overfitting. On the other hand, equal-sample, down-sample and shallow closely follow the spatial pattern of the virtual species (the truth).
 
 
-```{r  echo=TRUE, fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations on the virtual species (truth). Training data had 102 presences and 9775 random background points. For better comparison, the values in all maps were linearly rescaled between 0 and 1."}
+```{r map1, echo=TRUE, fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations on the virtual species (truth). Training data had 102 presences and 9775 random background points. For better comparison, the values in all maps were linearly rescaled between 0 and 1."}
 
 library(tmap)
 library(scales)
@@ -1049,10 +1049,10 @@ as.data.frame(maps, na.rm = TRUE) %>%
 
 ## Compare the plot from the two packages
 
-Spatial prediction of models fitted with the `randomForest` package is presented in Fig. S11. To make the differences clear, we rescaled all the values between 0 and 1 (for the predictions of both packages). 
+Spatial prediction of models fitted with the `randomForest` package is presented in Fig. S\@ref(fig:map2). To make the differences clear, we rescaled all the values between 0 and 1 (for the predictions of both packages). 
 Notice that we did not fit *shallow* model with the `randomForest` package.
 
-```{r echo=FALSE, fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations with randomForest package."}
+```{r map2, echo=FALSE, fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations with randomForest package."}
 
 # rescale and stack the predicted maps
 rf_maps <- list("default" = pred_def,
@@ -1073,9 +1073,9 @@ tm_shape(rf_maps) +
 ```
 
 
-Spatial prediction of models fitted with the `ranger` package is presented in Fig. S12. The truth is the same as the figure above.
+Spatial prediction of models fitted with the `ranger` package is presented in Fig. S\@ref(fig:map3). The truth is the same as the figure above.
 
-```{r echo=FALSE, fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations with ranger package."}
+```{r map3, echo=FALSE, fig.width=16, fig.height=7, fig.cap="Spatial prediction of different RF implementations with ranger package."}
 # rescale and stack the predicted maps
 rng_maps <- list("default" = pred_rng_def,
                  "regression" = pred_rng_reg,
@@ -1100,9 +1100,9 @@ tm_shape(rng_maps) +
 # Tree depth in different models
 
 As we discussed in the main text that RF (by default parameters) overfits the overlapped presence-background data by fitting overly deep trees. Sampling methods, i.e. *down-sampling* and *equal-sampling*, reduce the chance of class overlap by balancing the response data (presence and background samples) and thus avoid overfitting the training data. This should result in trees that are less deep than the RF models with the default parameters.
-To test whether sampling methods fit shallower trees than the other variants (default classification-RF, regression-RF, and weighted-RF), we calculated the *number of terminal nodes* (averaged over all trees of each RF model) for models fitted with the `randomForest` package on all NCEAS species. The number of terminal nodes is an indication of the depth of trees with a higher number of terminal nodes showing the deeper trees. We calculated the number of terminal nodes by the `ck37r::rf_count_terminal_nodes()` function.
+To test whether sampling methods fit shallower trees than the other variants (default classification-RF, regression-RF, and weighted-RF), we calculated the *number of terminal nodes* (averaged over all trees of each RF model) for models fitted with the `randomForest` package on all NCEAS species (Fig. S\@ref(fig:deep1)). The number of terminal nodes is an indication of the depth of trees with a higher number of terminal nodes showing the deeper trees. We calculated the number of terminal nodes by the `ck37r::rf_count_terminal_nodes()` function.
 
-```{r echo=FALSE, fig.cap="The average number of terminal nodes for 212 species of the NCEAS dataset fitted with KDE background samples. For sake of presentation, we removed 13 species that had higher than 5000 terminal nodes in the regression model.", fig.height=4.1, fig.width=4.4}
+```{r deep1, echo=FALSE, fig.cap="The average number of terminal nodes for 212 species of the NCEAS dataset fitted with KDE background samples. For sake of presentation, we removed 13 species that had higher than 5000 terminal nodes in the regression model.", fig.height=4.1, fig.width=4.4}
 library(tidyverse)
 
 tree_depth <- read_csv("data/tree_depth.csv")
@@ -1119,9 +1119,9 @@ ggplot(data = ., aes(x = name, y = value)) +
 
 ```
 
-Fig. S13 shows a clear reduction in the average number of terminal nodes in down-sampling and equal-sampling compared to the other models. To further highlight pairwise differences we showed the difference in the number of terminal nodes between the default model and the others (Fig. S14).
+Fig. S\@ref(fig:deep1) shows a clear reduction in the average number of terminal nodes in down-sampling and equal-sampling compared to the other models. To further highlight pairwise differences we showed the difference in the number of terminal nodes between the default model and the others (Fig. S\@ref(fig:deep2)).
 
-```{r echo=FALSE, fig.cap="The difference in the number of terminal nodes with the default (classification-RF) model. Positive numbers show higher number of terminal nodes than the default model and vice versa.", fig.height=4, fig.width=4.4}
+```{r depp2, echo=FALSE, fig.cap="The difference in the number of terminal nodes with the default (classification-RF) model. Positive numbers show higher number of terminal nodes than the default model and vice versa.", fig.height=4, fig.width=4.4}
 tree_depth %>% 
   filter(regression < 4000) %>% 
   mutate(downsample = downsample - default,
@@ -1139,7 +1139,7 @@ ggplot(data = ., aes(x = name, y = value)) +
   guides(col = "none")
 ```
 
-You can see in Fig. S14 and the following summary that the sampling methods has always a lower number of terminal nodes than the default classification-RF model. The weighted model had either equal or even more number of terminal nodes, and regression-RF had always a higher average number of terminal nodes.
+You can see in Fig. S\@ref(fig:deep2) and the following summary that the sampling methods has always a lower number of terminal nodes than the default classification-RF model. The weighted model had either equal or even more number of terminal nodes, and regression-RF had always a higher average number of terminal nodes.
 
 ```{r echo=FALSE}
 tree_depth %>% 
