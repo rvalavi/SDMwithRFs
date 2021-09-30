@@ -1,4 +1,5 @@
 # Modelling Species Presence-Only Data with Random Forests
+## Supporting Information
 
 This repository stores the code and supporting information for "*Modelling Species Presence-Only Data with Random Forests*" published in the *Ecography* journal.
 
