@@ -1133,7 +1133,7 @@ ggplot(data = ., aes(x = name, y = value)) +
 
 Fig. S\@ref(fig:deep1) shows a clear reduction in the average number of terminal nodes in down-sampling and equal-sampling compared to the other models. To further highlight pairwise differences we showed the difference in the number of terminal nodes between the default model and the others (Fig. S\@ref(fig:deep2)).
 
-```{r depp2, echo=FALSE, fig.cap="The difference in the number of terminal nodes with the default (classification-RF) model. Positive numbers show higher number of terminal nodes than the default model and vice versa.", fig.height=4, fig.width=4.4}
+```{r deep2, echo=FALSE, fig.cap="The difference in the number of terminal nodes with the default (classification-RF) model. Positive numbers show higher number of terminal nodes than the default model and vice versa.", fig.height=4, fig.width=4.4}
 tree_depth %>% 
   filter(regression < 4000) %>% 
   mutate(downsample = downsample - default,
