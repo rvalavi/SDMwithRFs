@@ -20,12 +20,23 @@ author:
     affiliation: The University of Melbourne, Australia
     affiliation_url: https://ecosystemforest.unimelb.edu.au/
     orcid_id: 0000-0002-8387-5739
+twitter: 
+  site: "@ValaviRoozbeh"
+  creator: "@ValaviRoozbeh"
+journal: 
+  title: "Ecography"
+  # issn: 2490-1752
+  # publisher: Nordic Society Oikos
+# volume: 10
+# issue: 4
+# doi: "10.1111/ecog.05615"
 date: "`r Sys.Date()`"
 output: 
   distill::distill_article:
     toc: true
     toc_depth: '2'
     theme: theme.css
+creative_commons: CC BY
 header-includes: 
   \usepackage{caption}
   \renewcommand{\figurename}{Fig.} 
@@ -603,9 +614,10 @@ ggplot(data = rf_repeat, aes(x = model, y = value)) +
 # Model implementation
 
 We implemented six strategies for modelling presence-background data with RF (plus the the default classification RF model). Here, we provide the code example of how we chose the parameters. 
-This example is run on a virtual species made based on some raster predictors provided in the `dismo` R package, available from CRAN. This is different to the Australian virtual species used in the main manuscript. Note that the background samples in this example is only 10,000 random background samples (all the cells available in the raster layers). This is enough to demonstrate how models are fitted, and can be repeated by readers (for the complete code of our analysis see codes archived on OSF available [here](https://osf.io/dkmw6/)).
+   
+This example is run on a virtual species made based on some raster predictors provided in the `dismo` R package, available from CRAN. This is different to the Australian virtual species used in the main manuscript. Note that the background samples in this example is only 10,000 random background samples (all the cells available in the raster layers). This is enough to demonstrate how models are fitted, and can be repeated by readers (for the complete code of our analysis see codes archived on OSF available [here!](https://osf.io/dkmw6/)).
 
-## Generating a virtual speciess
+## Generating a virtual species
 
 ```{r}
 # loading required packages
