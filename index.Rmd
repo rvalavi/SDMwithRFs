@@ -30,7 +30,7 @@ journal:
 # volume: 10
 # issue: 4
 doi: "10.1111/ecog.05615"
-date: "`r Sys.Date()`"
+date: "2021-09-21"
 output: 
   distill::distill_article:
     toc: true
