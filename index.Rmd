@@ -1,7 +1,7 @@
 ---
-title: "Modelling Species Presence-Only Data with Random Forests. Ecography."
+title: "Modelling species presence-only data with random forests. Ecography."
 description: |
-  Supporting Information
+  Supporting information
 author:
   - name: Roozbeh Valavi 
     url: https://github.com/rvalavi
@@ -27,8 +27,8 @@ journal:
   title: "Ecography"
   # issn: 2490-1752
   # publisher: Nordic Society Oikos
-# volume: 10
-# issue: 4
+volume: 44
+# issue: 44
 doi: "10.1111/ecog.05615"
 date: "2021-09-21"
 output: 
@@ -53,7 +53,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Supporting information for *Valavi, R., Elith, J., Lahoz-Monfort, J., Guillera-Arroita, G. (2021) Modelling Species Presence-Only Data with Random Forests. Ecography. DOI: 10.1111/ecog.05615*
+Supporting information for *Valavi, R., Elith, J., Lahoz-Monfort, J., Guillera-Arroita, G. (2021) Modelling species presence-only data with random forests. Ecography, 44: 1–12. DOI: 10.1111/ecog.05615*
 
 # Generating background samples
 
