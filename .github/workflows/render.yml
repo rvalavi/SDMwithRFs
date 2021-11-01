@@ -14,5 +14,4 @@ jobs:
         uses: lc5415/rmarkdown-action@v1
         with:
           input_file: ./index.Rmd
-	        output_format: html_document
-
+          output_format: html_document
